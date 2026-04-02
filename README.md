@@ -1,31 +1,53 @@
-#  ML Classification Pipeline
+# Customer Churn Prediction
 
-End-to-end machine learning pipeline with preprocessing, multi-model classification and evaluation.
+A machine learning pipeline built to predict customer churn using the Cell2Cell telecom dataset. The project covers data preprocessing, feature selection, dimensionality reduction and multi-model classification.
 
-##  Models
+## Dataset
 
-- Random Forest
-- Logistic Regression
+- Training set: `cell2celltrain.csv`
+- Holdout set: `cell2cellholdout.csv`
+- Target variable: `Churn` (Yes / No → 1 / 0)
+
+## Pipeline
+
+- Duplicate and missing value analysis
+- Missing values filled with mode (categorical) and mean (numerical)
+- Label Encoding for categorical columns
+- Feature selection with SelectKBest (mutual information, top 25 features)
+- Dimensionality reduction with TruncatedSVD
+- Feature scaling with StandardScaler
+- Stratified 5-Fold Cross-Validation for class-balanced splits
+
+## Models
+
 - Naive Bayes
-- Decision Tree
-
-##  Pipeline
-
-**Data Cleaning** — duplicates, outliers and inconsistencies are removed.
-**Missing Values** — numerical features are filled with mean/median, categorical features with mode imputation.
-**Encoding** — ordinal features use Label Encoding, nominal features use One-Hot Encoding.
-**Scaling** — all features are standardized using StandardScaler.
+- Logistic Regression
+- AdaBoost
+- Bagging Classifier
+- Neural Network (Keras Sequential with EarlyStopping)
+- PyTorch Neural Network
 
 ## Evaluation
 
-Models are evaluated with Accuracy, F1-Score and ROC-AUC scores. Confusion matrix is plotted for each model. 5-fold Cross-Validation is applied for robust performance estimation. Hyperparameters are tuned using GridSearchCV.
+- Accuracy, Precision, Recall, F1-Score, ROC-AUC
+- Confusion Matrix
+- Classification Report
+- ROC Curve per model
 
-##  Usage
+## Installation
 
 ```bash
 pip install -r requirements.txt
-jupyter notebook notebooks/ml_pipeline.ipynb
 ```
 
-> Python 3.9+ and scikit-learn 1.x required.
+## Usage
 
+```bash
+jupyter notebook customer-churn-prediction.ipynb
+```
+
+## Requirements
+
+- Python 3.9+
+- scikit-learn, pandas, numpy, matplotlib, seaborn
+- tensorflow, torch
